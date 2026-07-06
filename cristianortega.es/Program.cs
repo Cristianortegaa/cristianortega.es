@@ -11,7 +11,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(FrontendCorsPolicy, policy =>
     {
-        policy.WithOrigins("http://localhost:4200", "https://localhost:4200")
+        policy.WithOrigins(
+                "http://localhost:4200",
+                "https://localhost:4200",
+                "https://cristianortega.es",
+                "https://www.cristianortega.es")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
