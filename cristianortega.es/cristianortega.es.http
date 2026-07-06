@@ -1,0 +1,6 @@
+@cristianortega.es_HostAddress = http://localhost:5231
+
+GET {{cristianortega.es_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

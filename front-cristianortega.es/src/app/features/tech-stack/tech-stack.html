@@ -1,0 +1,50 @@
+<section class="bg-white px-6 py-24 sm:px-8">
+  <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-2xl text-center">
+      <img
+        src="/cristian-ortega-avatar.png"
+        alt="Cristian Ortega"
+        class="mx-auto h-20 w-20 rounded-full object-cover"
+      />
+      <p class="mt-4 text-sm italic text-slate-500">
+        "Cada proyecto lo llevo yo, de principio a fin. Sin comerciales de por medio, sin excusas."
+      </p>
+      <h2 class="font-display mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
+        Por qué trabajar conmigo y no con una plantilla
+      </h2>
+      <p class="mt-4 text-slate-600">
+        La misma seriedad técnica que usan las grandes empresas, con la cercanía de un freelance.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      @for (pillar of pillars; track pillar.title) {
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-8">
+          <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+            @switch (pillar.icon) {
+              @case ('bolt') {
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" />
+                </svg>
+              }
+              @case ('shield') {
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6v6c0 4.5 3.2 7.9 8 9 4.8-1.1 8-4.5 8-9V6l-8-3Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4" />
+                </svg>
+              }
+              @case ('layers') {
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m12 3 9 5-9 5-9-5 9-5Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m3 13 9 5 9-5" />
+                </svg>
+              }
+            }
+          </div>
+          <h3 class="mt-5 text-lg font-semibold text-slate-900">{{ pillar.title }}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ pillar.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

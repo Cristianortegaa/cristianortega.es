@@ -1,0 +1,50 @@
+<section id="portfolio" class="scroll-mt-20 bg-white px-6 py-24 sm:px-8">
+  <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
+        Casos de éxito, no solo diseño bonito
+      </h2>
+      <p class="mt-4 text-slate-600">Proyectos reales, resultados medibles.</p>
+    </div>
+
+    <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      @for (project of projects; track project.title) {
+        <article class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+            @if (project.illustration) {
+              <svg viewBox="0 0 400 300" class="h-full w-full transition duration-500 group-hover:scale-105" aria-hidden="true">
+                <defs>
+                  <linearGradient id="eventos-bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#2563eb" stop-opacity="0.07" />
+                    <stop offset="1" stop-color="#059669" stop-opacity="0.1" />
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="300" fill="url(#eventos-bg)" />
+                <circle cx="66" cy="58" r="3" fill="#059669" opacity="0.45" />
+                <circle cx="340" cy="76" r="2.5" fill="#2563eb" opacity="0.45" />
+                <circle cx="322" cy="232" r="3" fill="#059669" opacity="0.4" />
+                <circle cx="72" cy="238" r="2.5" fill="#2563eb" opacity="0.4" />
+                <circle cx="175" cy="150" r="42" fill="none" stroke="#2563eb" stroke-width="6" />
+                <circle cx="225" cy="150" r="42" fill="none" stroke="#059669" stroke-width="6" />
+              </svg>
+            } @else {
+              <img
+                [src]="project.image"
+                [alt]="project.title"
+                [class]="project.imageFit === 'contain'
+                  ? 'h-full w-full object-contain p-8 transition duration-500 group-hover:scale-105'
+                  : 'h-full w-full object-cover transition duration-500 group-hover:scale-105'"
+                loading="lazy"
+              />
+            }
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-medium uppercase tracking-wide text-accent-emerald">{{ project.tag }}</span>
+            <h3 class="mt-2 text-lg font-semibold text-slate-900">{{ project.title }}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ project.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

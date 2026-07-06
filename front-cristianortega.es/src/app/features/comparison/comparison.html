@@ -1,0 +1,35 @@
+<section class="bg-slate-50 px-6 py-24 sm:px-8">
+  <div class="mx-auto max-w-5xl">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
+        ¿Y por qué no una plantilla o una agencia grande?
+      </h2>
+      <p class="mt-4 text-slate-600">
+        Compáralo tú mismo. Sin rodeos.
+      </p>
+    </div>
+
+    <div class="mt-12 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+      <table class="w-full min-w-[640px] border-collapse text-left text-sm">
+        <thead>
+          <tr>
+            <th class="w-1/4 border-b border-slate-200 p-4 font-medium text-slate-500"></th>
+            <th class="border-b-2 border-accent bg-accent/5 p-4 font-semibold text-accent">Conmigo</th>
+            <th class="border-b border-slate-200 p-4 font-medium text-slate-500">Plantilla (Wix / WordPress)</th>
+            <th class="border-b border-slate-200 p-4 font-medium text-slate-500">Agencia grande</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of rows; track row.criterion) {
+            <tr class="border-b border-slate-100 last:border-b-0">
+              <td class="p-4 font-medium text-slate-900">{{ row.criterion }}</td>
+              <td class="bg-accent/5 p-4 font-medium text-slate-900">{{ row.me }}</td>
+              <td class="p-4 text-slate-600">{{ row.template }}</td>
+              <td class="p-4 text-slate-600">{{ row.agency }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

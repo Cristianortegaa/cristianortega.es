@@ -1,0 +1,8 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+
+# Secretos locales (SMTP, API keys...) - nunca se suben al repositorio
+appsettings.Local.json
