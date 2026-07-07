@@ -158,6 +158,33 @@ body {
   }
 }
 
+/* Halo decorativo que sigue al cursor */
+.cursor-fx {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 40%, transparent), transparent 70%);
+  filter: blur(3px);
+  opacity: 0;
+  transition: width 0.25s ease, height 0.25s ease, opacity 0.3s ease;
+  will-change: transform;
+}
+.cursor-fx--active {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent-emerald) 45%, transparent), transparent 70%);
+}
+@media (pointer: coarse) {
+  .cursor-fx {
+    display: none;
+  }
+}
+
 /* Marquesina infinita de confianza */
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
@@ -213,5 +240,8 @@ body {
   }
   .cta-glow:hover {
     transform: none;
+  }
+  .cursor-fx {
+    display: none;
   }
 }

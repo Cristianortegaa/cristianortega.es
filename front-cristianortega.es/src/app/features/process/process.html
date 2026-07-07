@@ -1,13 +1,16 @@
 <section id="proceso" class="scroll-mt-20 bg-slate-50 px-6 py-24 sm:px-8">
   <div class="mx-auto max-w-5xl">
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="font-display text-3xl font-semibold text-slate-900 sm:text-4xl">Cómo trabajo</h2>
+      <h2 class="font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
+        <span class="relative inline-block">
+          Cómo trabajo
+          <span appReveal class="reveal-line absolute -bottom-1 left-0 h-1 w-full rounded-full bg-gradient-to-r from-accent to-accent-emerald"></span>
+        </span>
+      </h2>
       <p class="mt-4 text-slate-600">Un proceso simple y transparente, de principio a fin.</p>
     </div>
 
     <div class="relative mt-14">
-      <div appReveal class="reveal-line pointer-events-none absolute inset-x-0 top-11 hidden h-px bg-slate-300 lg:block"></div>
-
       <div class="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
         @for (step of steps; track step.number; let i = $index) {
           <div appReveal [revealDelay]="i * 100" class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">

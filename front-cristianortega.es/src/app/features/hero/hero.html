@@ -13,23 +13,23 @@
   <div class="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 lg:py-28">
     <div class="grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-12">
       <!-- Columna de texto -->
-      <div appReveal class="mx-auto max-w-2xl text-center lg:mx-0 lg:max-w-none lg:text-left">
-        <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm text-slate-600">
+      <div class="mx-auto max-w-2xl text-center lg:mx-0 lg:max-w-none lg:text-left">
+        <span appReveal class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm text-slate-600">
           <span class="h-1.5 w-1.5 rounded-full bg-accent-emerald"></span>
           Diseño y desarrollo web para negocios
         </span>
 
-        <h1 class="font-display mt-6 text-4xl font-semibold leading-[1.15] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+        <h1 appReveal [revealDelay]="90" class="font-display mt-6 text-4xl font-semibold leading-[1.15] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
           ¿Tu web no te está trayendo clientes?
           <span class="text-shimmer">Vamos a arreglarlo.</span>
         </h1>
 
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 lg:max-w-xl">
+        <p appReveal [revealDelay]="200" class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 lg:max-w-xl">
           Diseño y desarrollo páginas web rápidas, profesionales y pensadas para vender.
           Nada de plantillas genéricas: una web a medida para tu negocio, con trato directo de principio a fin.
         </p>
 
-        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+        <div appReveal [revealDelay]="300" class="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
           <a
             href="#pricing"
             appMagnetic
@@ -45,7 +45,7 @@
           </a>
         </div>
 
-        <div class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-500 lg:justify-start">
+        <div appReveal [revealDelay]="380" class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-500 lg:justify-start">
           <span class="inline-flex items-center gap-2">
             <svg class="h-4 w-4 text-accent-emerald" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" />
