@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+
 @Component({
   selector: 'app-final-cta',
-  imports: [],
+  imports: [RevealDirective],
   templateUrl: './final-cta.html',
 })
 export class FinalCta {

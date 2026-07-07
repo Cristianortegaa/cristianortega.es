@@ -1,5 +1,9 @@
-<section id="pricing" class="scroll-mt-20 relative bg-slate-50 px-6 py-24 sm:px-8">
-  <div class="mx-auto max-w-5xl">
+<section id="pricing" class="scroll-mt-20 relative overflow-hidden bg-slate-50 px-6 py-24 sm:px-8">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent-emerald/5 blur-[130px]"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-5xl">
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
         Calcula tu presupuesto en segundos
@@ -12,10 +16,35 @@
     <div class="mt-14 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
       <!-- Options -->
       <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-        @for (option of options; track option.id) {
-          <button type="button" (click)="toggle(option.id)" [class]="cardClasses(option.id)">
+        @for (option of options; track option.id; let i = $index) {
+          <button appReveal [revealDelay]="i * 90" type="button" (click)="toggle(option.id)" [class]="cardClasses(option.id)">
             <div class="flex items-start justify-between gap-3">
-              <span class="font-semibold text-slate-900">{{ option.label }}</span>
+              <span class="flex items-center gap-2.5">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                  @switch (option.icon) {
+                    @case ('globe') {
+                      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                        <circle cx="12" cy="12" r="8.5" />
+                        <path stroke-linecap="round" d="M3.5 12h17M12 3.5a13 13 0 0 1 3.5 8.5 13 13 0 0 1-3.5 8.5A13 13 0 0 1 8.5 12 13 13 0 0 1 12 3.5Z" />
+                      </svg>
+                    }
+                    @case ('grid') {
+                      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                        <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+                        <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
+                        <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+                        <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
+                      </svg>
+                    }
+                    @case ('bolt') {
+                      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" />
+                      </svg>
+                    }
+                  }
+                </span>
+                <span class="font-semibold text-slate-900">{{ option.label }}</span>
+              </span>
               <span [class]="indicatorClasses(option.id)">
                 @if (isSelected(option.id)) {
                   <svg class="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
@@ -35,22 +64,22 @@
       </div>
 
       <!-- Summary + form -->
-      <div class="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-        <div>
+      <div appReveal [revealDelay]="150" class="flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <div class="bg-gradient-to-br from-accent/5 to-accent-emerald/5 p-8 pb-6">
           <p class="text-sm font-medium text-slate-500">Presupuesto estimado</p>
           <p
-            class="font-display mt-2 text-5xl font-semibold"
+            class="font-display mt-2 text-5xl font-semibold tabular-nums"
             [class.text-slate-900]="total() > 0"
             [class.text-slate-300]="total() === 0"
           >
-            {{ formatPrice(total()) }} €
+            {{ formatPrice(displayedTotal()) }} €
           </p>
           <p class="mt-2 text-xs text-slate-400">
             Precio orientativo. El presupuesto final se ajusta al alcance real del proyecto.
           </p>
         </div>
 
-        <form class="mt-8 flex flex-col gap-3" (ngSubmit)="submit()">
+        <form class="mt-2 flex flex-col gap-3 px-8 pb-8" (ngSubmit)="submit()">
           <!-- Campo trampa para bots: invisible para personas, no lo elimines -->
           <input
             type="text"

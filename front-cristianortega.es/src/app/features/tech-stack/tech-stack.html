@@ -1,26 +1,56 @@
-<section class="bg-white px-6 py-24 sm:px-8">
-  <div class="mx-auto max-w-6xl">
-    <div class="mx-auto max-w-2xl text-center">
-      <img
-        src="/cristian-ortega-avatar.png"
-        alt="Cristian Ortega"
-        class="mx-auto h-20 w-20 rounded-full object-cover"
-      />
-      <p class="mt-4 text-sm italic text-slate-500">
-        "Cada proyecto lo llevo yo, de principio a fin. Sin comerciales de por medio, sin excusas."
-      </p>
-      <h2 class="font-display mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
-        Por qué trabajar conmigo y no con una plantilla
-      </h2>
-      <p class="mt-4 text-slate-600">
-        La misma seriedad técnica que usan las grandes empresas, con la cercanía de un freelance.
-      </p>
+<section class="relative overflow-hidden bg-white px-6 py-24 sm:px-8">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute bottom-0 -left-32 h-80 w-80 rounded-full bg-accent-emerald/5 blur-[130px]"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-6xl">
+    <div class="grid gap-14 lg:grid-cols-[0.9fr_1fr] lg:items-center">
+      <!-- Mockup ilustrativo "sello de garantía" (decorativo) -->
+      <div appReveal class="mx-auto w-full max-w-md lg:mx-0" aria-hidden="true">
+        <div class="rounded-2xl border-2 border-dashed border-accent/25 bg-gradient-to-br from-accent/5 via-white to-accent-emerald/5 p-10 text-center shadow-sm">
+          <div class="relative mx-auto flex h-28 w-28 items-center justify-center">
+            <div class="absolute inset-0 animate-pulse-soft rounded-full border-2 border-dashed border-accent/30"></div>
+            <div class="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-emerald text-white shadow-lg shadow-accent/30">
+              <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6v6c0 4.5 3.2 7.9 8 9 4.8-1.1 8-4.5 8-9V6l-8-3Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4" />
+              </svg>
+            </div>
+          </div>
+
+          <h3 class="font-display mt-6 text-xl font-semibold text-slate-900">Garantía de Satisfacción</h3>
+          <p class="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-slate-600">
+            Si el primer diseño no te convence, no hay compromiso ni coste. Sin letra pequeña.
+          </p>
+
+          <div class="mx-auto mt-6 w-28 border-t border-slate-300"></div>
+          <p class="font-display mt-3 text-sm italic text-slate-500">Cristian Ortega</p>
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div appReveal [revealDelay]="100" class="mx-auto max-w-2xl text-center lg:mx-0 lg:max-w-none lg:text-left">
+        <img
+          src="/cristian-ortega-avatar.png"
+          alt="Cristian Ortega"
+          class="mx-auto h-20 w-20 rounded-full object-cover ring-4 ring-accent/10 lg:mx-0"
+        />
+        <p class="mx-auto mt-4 inline-block rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm italic text-slate-500 lg:mx-0">
+          "Cada proyecto lo llevo yo, de principio a fin. Sin comerciales de por medio, sin excusas."
+        </p>
+        <h2 class="font-display mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
+          Por qué trabajar conmigo y no con una plantilla
+        </h2>
+        <p class="mt-4 text-slate-600">
+          La misma seriedad técnica que usan las grandes empresas, con la cercanía de un freelance.
+        </p>
+      </div>
     </div>
 
     <div class="mt-14 grid gap-6 md:grid-cols-3">
-      @for (pillar of pillars; track pillar.title) {
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-8">
-          <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+      @for (pillar of pillars; track pillar.title; let i = $index) {
+        <div appReveal [revealDelay]="i * 100" class="group rounded-2xl border border-slate-200 bg-slate-50 p-8 transition hover:-translate-y-1 hover:shadow-md">
+          <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent transition duration-300 group-hover:scale-110 group-hover:rotate-6">
             @switch (pillar.icon) {
               @case ('bolt') {
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">

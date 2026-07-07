@@ -1,25 +1,28 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { QuoteRequest } from '../../core/models/quote-request.model';
 import { QuoteService } from '../../core/services/quote.service';
+import { RevealDirective } from '../../shared/directives/reveal.directive';
 
 interface PricingOption {
   id: string;
   label: string;
   description: string;
   price: number;
+  icon: 'globe' | 'grid' | 'bolt';
 }
 
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
 @Component({
   selector: 'app-interactive-pricing',
-  imports: [FormsModule],
+  imports: [FormsModule, RevealDirective],
   templateUrl: './interactive-pricing.html',
 })
 export class InteractivePricing {
   private readonly quoteService = inject(QuoteService);
+  private animationFrame?: number;
 
   protected readonly options: PricingOption[] = [
     {
@@ -27,18 +30,21 @@ export class InteractivePricing {
       label: 'Web Escaparate',
       description: 'Sitio corporativo o landing con diseño a medida, optimizado para conversión.',
       price: 650,
+      icon: 'globe',
     },
     {
       id: 'gestion-compleja',
       label: 'Gestión Compleja',
       description: 'Paneles de administración, lógica de negocio avanzada y base de datos.',
       price: 2200,
+      icon: 'grid',
     },
     {
       id: 'automatizacion',
       label: 'Automatización',
       description: 'Integraciones, flujos automáticos y conexión con servicios externos.',
       price: 950,
+      icon: 'bolt',
     },
   ];
 
@@ -57,6 +63,37 @@ export class InteractivePricing {
       .filter((option) => selected.has(option.id))
       .reduce((sum, option) => sum + option.price, 0);
   });
+
+  /** Valor animado (cuenta hacia arriba/abajo) que se muestra en la tarjeta de resumen. */
+  protected readonly displayedTotal = signal(0);
+
+  constructor() {
+    effect(() => {
+      this.animateTo(this.total());
+    });
+  }
+
+  private animateTo(target: number): void {
+    if (this.animationFrame !== undefined) {
+      cancelAnimationFrame(this.animationFrame);
+    }
+    const start = this.displayedTotal();
+    if (start === target) {
+      return;
+    }
+    const startTime = performance.now();
+    const duration = 400;
+
+    const step = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      this.displayedTotal.set(Math.round(start + (target - start) * eased));
+      if (progress < 1) {
+        this.animationFrame = requestAnimationFrame(step);
+      }
+    };
+    this.animationFrame = requestAnimationFrame(step);
+  }
 
   protected toggle(id: string): void {
     const next = new Set(this.selectedIds());

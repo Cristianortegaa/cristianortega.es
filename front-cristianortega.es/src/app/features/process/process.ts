@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+
 interface Step {
   number: string;
   title: string;
@@ -8,7 +10,7 @@ interface Step {
 
 @Component({
   selector: 'app-process',
-  imports: [],
+  imports: [RevealDirective],
   templateUrl: './process.html',
 })
 export class Process {

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+
 interface ComparisonRow {
   criterion: string;
   me: string;
@@ -9,7 +11,7 @@ interface ComparisonRow {
 
 @Component({
   selector: 'app-comparison',
-  imports: [],
+  imports: [RevealDirective],
   templateUrl: './comparison.html',
 })
 export class Comparison {

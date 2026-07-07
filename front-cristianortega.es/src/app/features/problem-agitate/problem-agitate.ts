@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+
 interface PainPoint {
   text: string;
 }
 
 @Component({
   selector: 'app-problem-agitate',
-  imports: [],
+  imports: [RevealDirective],
   templateUrl: './problem-agitate.html',
 })
 export class ProblemAgitate {

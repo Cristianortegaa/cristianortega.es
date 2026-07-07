@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+
 interface Project {
   title: string;
   description: string;
@@ -11,7 +13,7 @@ interface Project {
 
 @Component({
   selector: 'app-portfolio-grid',
-  imports: [],
+  imports: [RevealDirective],
   templateUrl: './portfolio-grid.html',
 })
 export class PortfolioGrid {

@@ -1,5 +1,9 @@
-<section class="border-y border-slate-200 bg-slate-50 px-6 py-24 sm:px-8">
-  <div class="mx-auto max-w-6xl">
+<section class="relative overflow-hidden border-y border-slate-200 bg-slate-50 px-6 py-24 sm:px-8">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute bottom-0 -left-32 h-72 w-72 rounded-full bg-accent-emerald/5 blur-[120px]"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-6xl">
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
         Lo que dicen quienes ya han trabajado conmigo
@@ -8,11 +12,20 @@
     </div>
 
     <div class="mt-14 grid gap-6 md:grid-cols-3">
-      @for (testimonial of testimonials; track testimonial.author) {
-        <div class="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <svg class="h-7 w-7 text-accent/30" viewBox="0 0 32 32" fill="currentColor">
-            <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-2.2 1.8-4 4-4V8Zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-2.2 1.8-4 4-4V8Z" />
-          </svg>
+      @for (testimonial of testimonials; track testimonial.author; let i = $index) {
+        <div appReveal [revealDelay]="i * 100" class="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+          <div class="flex items-center justify-between">
+            <div class="flex gap-0.5 text-amber-400">
+              @for (star of [1, 2, 3, 4, 5]; track star) {
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6-4.5-4.2 6.1-.7L10 1.5Z" />
+                </svg>
+              }
+            </div>
+            <svg class="h-7 w-7 text-accent/20" viewBox="0 0 32 32" fill="currentColor">
+              <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-2.2 1.8-4 4-4V8Zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-2.2 1.8-4 4-4V8Z" />
+            </svg>
+          </div>
           <p class="mt-4 flex-1 text-sm leading-relaxed text-slate-600">{{ testimonial.quote }}</p>
           <div class="mt-6 border-t border-slate-100 pt-4">
             <p class="font-display font-semibold text-slate-900">{{ testimonial.author }}</p>

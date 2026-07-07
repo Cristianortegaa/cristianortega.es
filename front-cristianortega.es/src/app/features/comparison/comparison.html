@@ -1,5 +1,9 @@
-<section class="bg-slate-50 px-6 py-24 sm:px-8">
-  <div class="mx-auto max-w-5xl">
+<section class="relative overflow-hidden bg-slate-50 px-6 py-24 sm:px-8">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute top-0 -right-32 h-72 w-72 rounded-full bg-accent/5 blur-[120px]"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-5xl">
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
         ¿Y por qué no una plantilla o una agencia grande?
@@ -9,21 +13,50 @@
       </p>
     </div>
 
-    <div class="mt-12 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+    <div appReveal class="mt-12 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
       <table class="w-full min-w-[640px] border-collapse text-left text-sm">
         <thead>
           <tr>
             <th class="w-1/4 border-b border-slate-200 p-4 font-medium text-slate-500"></th>
-            <th class="border-b-2 border-accent bg-accent/5 p-4 font-semibold text-accent">Conmigo</th>
-            <th class="border-b border-slate-200 p-4 font-medium text-slate-500">Plantilla (Wix / WordPress)</th>
-            <th class="border-b border-slate-200 p-4 font-medium text-slate-500">Agencia grande</th>
+            <th class="border-b-2 border-accent bg-accent/5 p-4 font-semibold text-accent">
+              <span class="inline-flex items-center gap-2">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m5 16 2-9 5 5 5-8 2 12H5Z" />
+                </svg>
+                Conmigo
+              </span>
+            </th>
+            <th class="border-b border-slate-200 p-4 font-medium text-slate-500">
+              <span class="inline-flex items-center gap-2">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+                  <path stroke-linecap="round" d="M3.5 9h17" />
+                </svg>
+                Plantilla (Wix / WordPress)
+              </span>
+            </th>
+            <th class="border-b border-slate-200 p-4 font-medium text-slate-500">
+              <span class="inline-flex items-center gap-2">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 20V9l6-4 6 4v11M4 20h16M8 20v-5h4v5" />
+                </svg>
+                Agencia grande
+              </span>
+            </th>
           </tr>
         </thead>
         <tbody>
           @for (row of rows; track row.criterion) {
-            <tr class="border-b border-slate-100 last:border-b-0">
+            <tr class="border-b border-slate-100 transition last:border-b-0 hover:bg-slate-50">
               <td class="p-4 font-medium text-slate-900">{{ row.criterion }}</td>
-              <td class="bg-accent/5 p-4 font-medium text-slate-900">{{ row.me }}</td>
+              <td class="bg-accent/5 p-4 font-medium text-slate-900">
+                <span class="flex items-center gap-2">
+                  <svg class="h-4 w-4 shrink-0 text-accent-emerald" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" />
+                  </svg>
+                  {{ row.me }}
+                </span>
+              </td>
               <td class="p-4 text-slate-600">{{ row.template }}</td>
               <td class="p-4 text-slate-600">{{ row.agency }}</td>
             </tr>

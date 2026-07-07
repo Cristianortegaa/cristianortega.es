@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+
 interface FaqItem {
   question: string;
   answer: string;
@@ -7,7 +9,7 @@ interface FaqItem {
 
 @Component({
   selector: 'app-faq',
-  imports: [],
+  imports: [RevealDirective],
   templateUrl: './faq.html',
 })
 export class Faq {

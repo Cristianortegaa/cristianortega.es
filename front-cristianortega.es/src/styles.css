@@ -20,3 +20,68 @@ body {
 ::selection {
   background-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
 }
+
+/* Animaciones reutilizables */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float { animation: float 4.5s ease-in-out infinite; }
+.animate-float-slow { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float 5s ease-in-out infinite; animation-delay: 0.8s; }
+
+@keyframes blob {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.12) translate(12px, -10px); }
+}
+.animate-blob { animation: blob 9s ease-in-out infinite; }
+.animate-blob-delayed { animation: blob 11s ease-in-out infinite; animation-delay: 1.5s; }
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.animate-pulse-soft { animation: pulse-soft 2.6s ease-in-out infinite; }
+
+@keyframes draw-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Reveal-on-scroll: usado por la directiva appReveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variante para líneas/barras que "se dibujan" (scaleX) en vez de aparecer con fade */
+[data-reveal].reveal-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].reveal-line.is-visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-float,
+  .animate-float-slow,
+  .animate-float-delayed,
+  .animate-blob,
+  .animate-blob-delayed,
+  .animate-pulse-soft {
+    animation: none;
+  }
+}

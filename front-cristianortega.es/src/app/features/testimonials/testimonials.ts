@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+
 interface Testimonial {
   quote: string;
   author: string;
@@ -8,7 +10,7 @@ interface Testimonial {
 
 @Component({
   selector: 'app-testimonials',
-  imports: [],
+  imports: [RevealDirective],
   templateUrl: './testimonials.html',
 })
 export class Testimonials {

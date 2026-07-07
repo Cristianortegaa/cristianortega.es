@@ -7,15 +7,20 @@
 
     <div class="mt-12 flex flex-col gap-3">
       @for (item of items; track item.question; let i = $index) {
-        <div class="overflow-hidden rounded-xl border border-slate-200 bg-white">
+        <div appReveal [revealDelay]="i * 70" class="overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:border-slate-300">
           <button
             type="button"
             (click)="toggle(i)"
             class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
           >
-            <span class="font-medium text-slate-900">{{ item.question }}</span>
+            <span class="flex items-center gap-3">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 font-display text-sm font-semibold text-accent">
+                ?
+              </span>
+              <span class="font-medium text-slate-900">{{ item.question }}</span>
+            </span>
             <svg
-              class="h-5 w-5 shrink-0 text-slate-400 transition-transform"
+              class="h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300"
               [class.rotate-45]="isOpen(i)"
               fill="none"
               viewBox="0 0 24 24"
@@ -25,11 +30,13 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>
           </button>
-          @if (isOpen(i)) {
-            <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              {{ item.answer }}
-            </p>
-          }
+          <div class="grid transition-all duration-300 ease-out" [style.grid-template-rows]="isOpen(i) ? '1fr' : '0fr'">
+            <div class="overflow-hidden">
+              <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
+                {{ item.answer }}
+              </p>
+            </div>
+          </div>
         </div>
       }
     </div>

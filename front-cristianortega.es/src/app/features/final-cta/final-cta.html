@@ -1,24 +1,65 @@
-<section class="bg-slate-900 px-6 py-20 sm:px-8">
-  <div class="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
-    <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Hablemos de tu proyecto</h2>
-    <p class="max-w-xl text-slate-300">
-      Cuéntame qué necesita tu negocio y te preparo una propuesta sin compromiso.
-    </p>
-    <div class="mt-2 flex flex-col gap-4 sm:flex-row">
-      <a
-        href="#pricing"
-        class="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-accent/90"
-      >
-        Pide tu presupuesto gratis
-      </a>
-      <a
-        [href]="gmailComposeUrl"
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center justify-center rounded-lg border border-slate-600 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white/5"
-      >
-        Escríbeme directamente
-      </a>
+<section class="relative overflow-hidden bg-slate-900 px-6 py-20 sm:px-8">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-accent/10 blur-[120px]"></div>
+    <div class="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-accent-emerald/10 blur-[120px]"></div>
+  </div>
+
+  <div class="relative mx-auto grid max-w-6xl gap-14 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+    <div appReveal class="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
+      <span class="animate-float flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-accent-emerald">
+        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 4 2.5 11l6.5 2.5m12-9.5-3.5 17-6-7.5m9.5-9.5-12 9.5m0 0v5.5" />
+        </svg>
+      </span>
+      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Hablemos de tu proyecto</h2>
+      <p class="max-w-xl text-slate-300">
+        Cuéntame qué necesita tu negocio y te preparo una propuesta sin compromiso.
+      </p>
+      <div class="mt-2 flex flex-col gap-4 sm:flex-row">
+        <a
+          href="#pricing"
+          class="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-accent/90"
+        >
+          Pide tu presupuesto gratis
+        </a>
+        <a
+          [href]="gmailComposeUrl"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center rounded-lg border border-slate-600 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white/5"
+        >
+          Escríbeme directamente
+        </a>
+      </div>
+    </div>
+
+    <!-- Mockup ilustrativo de conversación directa (decorativo) -->
+    <div appReveal [revealDelay]="150" class="hidden lg:block" aria-hidden="true">
+      <div class="mx-auto max-w-sm rounded-2xl border border-white/10 bg-white/5 p-4 shadow-2xl shadow-slate-900/40 backdrop-blur">
+        <div class="flex items-center gap-2 border-b border-white/10 pb-3">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent-emerald/20 text-accent-emerald">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H8l-4 4V5Z" />
+            </svg>
+          </span>
+          <div>
+            <p class="text-xs font-semibold text-white">Cristian Ortega</p>
+            <p class="text-[11px] text-accent-emerald">Suele responder en minutos</p>
+          </div>
+        </div>
+
+        <div class="mt-4 flex flex-col gap-2.5">
+          <div class="ml-auto max-w-[85%] rounded-2xl rounded-tr-sm bg-accent-emerald px-3.5 py-2 text-xs text-white">
+            Hola, quiero pedir presupuesto para mi web 👋
+          </div>
+          <div class="mr-auto max-w-[85%] rounded-2xl rounded-tl-sm bg-white/10 px-3.5 py-2 text-xs text-slate-100">
+            ¡Claro! Cuéntame qué necesita tu negocio y en 24-48h te mando una propuesta cerrada.
+          </div>
+          <div class="ml-auto max-w-[85%] rounded-2xl rounded-tr-sm bg-accent-emerald px-3.5 py-2 text-xs text-white">
+            Perfecto, te escribo ahora
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

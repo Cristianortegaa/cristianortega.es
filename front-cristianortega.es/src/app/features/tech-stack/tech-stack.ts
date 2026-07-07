@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+
 interface Pillar {
   title: string;
   description: string;
@@ -8,7 +10,7 @@ interface Pillar {
 
 @Component({
   selector: 'app-tech-stack',
-  imports: [],
+  imports: [RevealDirective],
   templateUrl: './tech-stack.html',
 })
 export class TechStack {
