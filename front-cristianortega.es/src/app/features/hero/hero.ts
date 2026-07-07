@@ -3,10 +3,11 @@ import { Component, HostListener, signal } from '@angular/core';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 import { CountUpDirective } from '../../shared/directives/count-up.directive';
 import { MagneticDirective } from '../../shared/directives/magnetic.directive';
+import { HeroScene } from '../hero-scene/hero-scene';
 
 @Component({
   selector: 'app-hero',
-  imports: [RevealDirective, CountUpDirective, MagneticDirective],
+  imports: [RevealDirective, CountUpDirective, MagneticDirective, HeroScene],
   templateUrl: './hero.html',
 })
 export class Hero {
