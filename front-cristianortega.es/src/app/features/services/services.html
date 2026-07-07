@@ -60,7 +60,7 @@
 
         <div class="mt-8 grid gap-6">
           @for (service of services; track service.title; let i = $index) {
-            <div appReveal [revealDelay]="150 + i * 100" class="group rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+            <div appReveal [revealDelay]="150 + i * 100" appTilt class="card-shine group rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-xl">
               <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent transition duration-300 group-hover:scale-110 group-hover:rotate-6">
                 @switch (service.icon) {
                   @case ('globe') {

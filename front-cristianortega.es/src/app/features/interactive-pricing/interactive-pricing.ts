@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { QuoteRequest } from '../../core/models/quote-request.model';
 import { QuoteService } from '../../core/services/quote.service';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 
 interface PricingOption {
   id: string;
@@ -17,7 +18,7 @@ type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
 @Component({
   selector: 'app-interactive-pricing',
-  imports: [FormsModule, RevealDirective],
+  imports: [FormsModule, RevealDirective, MagneticDirective],
   templateUrl: './interactive-pricing.html',
 })
 export class InteractivePricing {
@@ -144,7 +145,10 @@ export class InteractivePricing {
     this.status.set('sending');
 
     this.quoteService.submit(request).subscribe({
-      next: () => this.status.set('success'),
+      next: () => {
+        this.status.set('success');
+        this.launchConfetti();
+      },
       error: () => {
         this.errorMessage.set(
           'No se pudo enviar la solicitud. Comprueba que el servidor esté encendido e inténtalo de nuevo.'
@@ -152,5 +156,44 @@ export class InteractivePricing {
         this.status.set('error');
       },
     });
+  }
+
+  /** Pequeño confeti de celebración al enviar la solicitud con éxito. */
+  private launchConfetti(): void {
+    if (typeof document === 'undefined' || typeof window === 'undefined') {
+      return;
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const colors = ['#2563eb', '#059669', '#f59e0b', '#ec4899', '#8b5cf6'];
+    const originX = window.innerWidth / 2;
+    const originY = window.innerHeight * 0.55;
+
+    for (let i = 0; i < 28; i++) {
+      const piece = document.createElement('span');
+      piece.className = 'confetti-piece';
+
+      const size = 6 + Math.random() * 6;
+      piece.style.width = `${size}px`;
+      piece.style.height = `${size * 0.45}px`;
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.left = `${originX}px`;
+      piece.style.top = `${originY}px`;
+
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 80 + Math.random() * 140;
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance - 60;
+      const rotation = Math.random() * 720 - 360;
+
+      piece.style.setProperty('--confetti-x', `${x}px`);
+      piece.style.setProperty('--confetti-y', `${y}px`);
+      piece.style.setProperty('--confetti-r', `${rotation}deg`);
+
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 1300);
+    }
   }
 }

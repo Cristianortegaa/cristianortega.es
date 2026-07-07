@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 
+import { MagneticDirective } from '../../shared/directives/magnetic.directive';
+
 interface NavLink {
   label: string;
   href: string;
@@ -7,7 +9,7 @@ interface NavLink {
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [MagneticDirective],
   templateUrl: './header.html',
 })
 export class Header {

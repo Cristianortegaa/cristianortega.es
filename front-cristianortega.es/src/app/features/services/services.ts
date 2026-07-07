@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { TiltDirective } from '../../shared/directives/tilt.directive';
 
 interface Service {
   title: string;
@@ -10,7 +11,7 @@ interface Service {
 
 @Component({
   selector: 'app-services',
-  imports: [RevealDirective],
+  imports: [RevealDirective, TiltDirective],
   templateUrl: './services.html',
 })
 export class Services {

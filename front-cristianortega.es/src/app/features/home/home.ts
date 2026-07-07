@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Hero } from '../hero/hero';
+import { TrustMarquee } from '../trust-marquee/trust-marquee';
 import { ProblemAgitate } from '../problem-agitate/problem-agitate';
 import { Services } from '../services/services';
 import { Process } from '../process/process';
@@ -17,6 +18,7 @@ import { Footer } from '../footer/footer';
   selector: 'app-home',
   imports: [
     Hero,
+    TrustMarquee,
     ProblemAgitate,
     Services,
     Process,

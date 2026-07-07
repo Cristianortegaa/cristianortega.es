@@ -1,5 +1,11 @@
-<section id="top" class="relative overflow-hidden bg-white">
-  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+<section
+  id="top"
+  class="spotlight relative overflow-hidden bg-white"
+  (mousemove)="onSpotlightMove($event)"
+  [style.--spot-x.%]="spotlightX()"
+  [style.--spot-y.%]="spotlightY()"
+>
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" [style.transform]="'translateY(' + parallaxOffset() + 'px)'">
     <div class="animate-blob absolute -top-32 -right-24 h-96 w-96 rounded-full bg-accent/10 blur-[120px]"></div>
     <div class="animate-blob-delayed absolute bottom-0 -left-24 h-80 w-80 rounded-full bg-accent-emerald/10 blur-[120px]"></div>
   </div>
@@ -15,7 +21,7 @@
 
         <h1 class="font-display mt-6 text-4xl font-semibold leading-[1.15] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
           ¿Tu web no te está trayendo clientes?
-          <span class="text-accent">Vamos a arreglarlo.</span>
+          <span class="text-shimmer">Vamos a arreglarlo.</span>
         </h1>
 
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 lg:max-w-xl">
@@ -26,7 +32,8 @@
         <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
           <a
             href="#pricing"
-            class="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition hover:bg-accent/90 hover:shadow-accent/40"
+            appMagnetic
+            class="cta-glow inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition hover:bg-accent/90"
           >
             Pide tu presupuesto gratis
           </a>
@@ -99,12 +106,12 @@
 
         <!-- Insignias flotantes con datos reales -->
         <div class="animate-float absolute -top-6 -left-6 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-lg">
-          <p class="font-display text-xl font-bold text-slate-900">+3</p>
+          <p class="font-display text-xl font-bold text-slate-900">+<span appCountUp="3">0</span></p>
           <p class="text-xs text-slate-500">años de experiencia</p>
         </div>
 
         <div class="animate-float-delayed absolute top-1/2 -left-10 -translate-y-1/2 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-lg">
-          <p class="font-display text-xl font-bold text-accent-emerald">+10</p>
+          <p class="font-display text-xl font-bold text-accent-emerald">+<span appCountUp="10">0</span></p>
           <p class="text-xs text-slate-500">proyectos completados</p>
         </div>
       </div>
@@ -115,15 +122,15 @@
   <div class="relative border-t border-slate-800 bg-slate-900">
     <div class="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 px-6 py-10 sm:px-8 md:grid-cols-4">
       <div appReveal class="text-center">
-        <p class="font-display text-2xl font-bold text-white sm:text-3xl">+10</p>
+        <p class="font-display text-2xl font-bold text-white sm:text-3xl">+<span appCountUp="10">0</span></p>
         <p class="mt-1 text-xs text-slate-400 sm:text-sm">Proyectos completados</p>
       </div>
       <div appReveal [revealDelay]="80" class="text-center">
-        <p class="font-display text-2xl font-bold text-white sm:text-3xl">+3</p>
+        <p class="font-display text-2xl font-bold text-white sm:text-3xl">+<span appCountUp="3">0</span></p>
         <p class="mt-1 text-xs text-slate-400 sm:text-sm">Años de experiencia</p>
       </div>
       <div appReveal [revealDelay]="160" class="text-center">
-        <p class="font-display text-2xl font-bold text-white sm:text-3xl">3</p>
+        <p class="font-display text-2xl font-bold text-white sm:text-3xl"><span appCountUp="3">0</span></p>
         <p class="mt-1 text-xs text-slate-400 sm:text-sm">Testimonios reales verificados</p>
       </div>
       <div appReveal [revealDelay]="240" class="text-center">
