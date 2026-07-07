@@ -6,8 +6,18 @@
 
     <nav class="hidden items-center gap-8 md:flex">
       @for (link of links; track link.href) {
-        <a [href]="link.href" class="text-sm font-medium text-slate-600 transition hover:text-slate-900">
+        <a
+          [href]="link.href"
+          class="relative pb-1 text-sm font-medium transition hover:text-slate-900"
+          [class.text-slate-900]="activeHref() === link.href"
+          [class.text-slate-600]="activeHref() !== link.href"
+        >
           {{ link.label }}
+          <span
+            class="absolute -bottom-1 left-0 h-0.5 rounded-full bg-accent transition-all duration-300"
+            [class.w-full]="activeHref() === link.href"
+            [class.w-0]="activeHref() !== link.href"
+          ></span>
         </a>
       }
     </nav>
